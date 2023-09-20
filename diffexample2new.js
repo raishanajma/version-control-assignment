@@ -10,7 +10,7 @@ that natively without any external plugins
 
 //Node JS dependencies for reading and writing files to the file system. --revised here
 var fs = require('fs');
-var process = procecess.argv[2];
+var process = process.argv[2];
 //Read the file from the file system --revised here
 var obj = fs.readFileSync(process,'utf8');
 //get the date from the first item.
