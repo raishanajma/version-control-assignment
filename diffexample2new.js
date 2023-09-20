@@ -27,8 +27,8 @@ for(var i = 0; i < obj.length; i++){
   //item is a single person
   var item = obj[i];
   //check if item has a creditcard and email then save the :name and :creditcard and :email to the csv object in the csv format --revised here
-  if(jsondata.email != null && jsondata.creditcard != null){
-    csv += jsondata.name + "," + jsondata.email + "," + jsondata.creditcard + "\n";
+  if(item.email != null && item.creditcard != null){
+    csv += item.name + "," + item.email + "," + item.creditcard + "\n";
   }
 }
 
