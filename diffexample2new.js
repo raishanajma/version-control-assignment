@@ -10,9 +10,9 @@ that natively without any external plugins
 
 //Node JS dependencies for reading and writing files to the file system. --revised here
 var fs = require('fs');
-var process = process.argv[2];
+var jsondata = process.argv[2];
 //Read the file from the file system --revised here
-var obj = fs.readFileSync(process,'utf8');
+var obj = fs.readFileSync(jsondata,'utf8');
 //get the date from the first item.
 var date = new Date(obj[0].timestamp);
 //format the date to the YYYYMMDD.csv required for the submission.
