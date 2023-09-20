@@ -9,9 +9,9 @@ that natively without any external plugins
 */
 
 //Node JS dependencies for reading and writing files to the file system.
-var fs = require('fs');
+var process = require('process');
 //Read the file from the file system
-var obj = JSON.parse(fs.readFileSync('./data.json','utf8'));
+var obj = process.argv;
 //get the date from the first item.
 var date = new Date(obj[0].timestamp);
 //format the date to the YYYYMMDD.csv required for the submission.
@@ -30,7 +30,7 @@ for(var i = 0; i < obj.length; i++){
 }
 
 //store the compiled csv in a file formated YYYYMMDD.csv
-fs.writeFile("./" + datef.getFullYear() + addzero(datef.getMonth() + 1) + addzero(datef.getDate()) + ".csv", csv, function(err) {
+obj.writeFile("./" + datef.getFullYear() + addzero(datef.getMonth() + 1) + addzero(datef.getDate()) + ".csv", csv, function(err) {
     if(err) {
         return console.log(err);
     }
