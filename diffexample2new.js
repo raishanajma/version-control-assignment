@@ -14,7 +14,6 @@ var jsondata = process.argv[2];
 
 //Read and parse the file from the file system --revised here
 var obj = fs.readFileSync(jsondata);
-const jsonparsed = JSON.parse(jsondata);
 
 //format the date to the YYYYMMDD.csv required for the submission. --revised here
 var dt = Date.now()
@@ -28,8 +27,8 @@ for(var i = 0; i < obj.length; i++){
   //item is a single person
   var item = obj[i];
   //check if item has a creditcard and email then save the :name and :creditcard and :email to the csv object in the csv format --revised here
-  if(jsonparsed.email != null && jsonparsed.creditcard != null){
-    csv += item.name + "," + item.email + "," + item.creditcard + "\n";
+  if(jsondata.email != null && jsondata.creditcard != null){
+    csv += jsondata.name + "," + jsondata.email + "," + jsondata.creditcard + "\n";
   }
 }
 
