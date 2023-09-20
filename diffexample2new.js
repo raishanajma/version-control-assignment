@@ -15,7 +15,8 @@ var obj = JSON.parse(fs.readFileSync('./data.json','utf8'));
 //get the date from the first item.
 var date = new Date(obj[0].timestamp);
 //format the date to the YYYYMMDD.csv required for the submission.
-var datef = date.getFullYear() + pad2(date.getMonth()+1) + pad2(date.getDate());
+var dt = Date.now()
+var datef = new Date(dt)
 //to return string object
 var csv = ""
 //for loop to parse all items
@@ -29,14 +30,14 @@ for(var i = 0; i < obj.length; i++){
 }
 
 //store the compiled csv in a file formated YYYYMMDD.csv
-fs.writeFile("./" + datef + ".csv", csv, function(err) {
+fs.writeFile("./" + datef.getFullYear() + addzero(datef.getMonth() + 1) + addzero(datef.getDate()) + ".csv", csv, function(err) {
     if(err) {
         return console.log(err);
     }
     console.log("The file was saved!");
 });
 
-//formating function for manking numbebers 2 digits ex "2" -> "02"
-function pad2(number) {
+//formating function for making numbers 2 digits ex "2" -> "02"
+function addzero(number) {
      return (number < 10 ? '0' : '') + number
 }
