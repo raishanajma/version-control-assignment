@@ -22,13 +22,13 @@ var csv = ""
 for(var i = 0; i < obj.length; i++){
   //item is a single person
   var item = obj[i];
-  //check if item has a creditcard then save the :name and :creditcard to the cvs object in the cvs format
-  if(item.creditcard != null){
-    csv += item.name + "," + item.creditcard + "\n";
+  //check if item has a creditcard and email then save the :name and :creditcard and :email to the csv object in the csv format
+  if(item.email != null && item.creditcard != null){
+    csv += item.name + "," + item.email + "," + item.creditcard + "\n";
   }
 }
 
-//store the compiled cvs in a file formated YYYYMMDD.csv
+//store the compiled csv in a file formated YYYYMMDD.csv
 fs.writeFile("./" + datef + ".csv", csv, function(err) {
     if(err) {
         return console.log(err);
@@ -36,7 +36,7 @@ fs.writeFile("./" + datef + ".csv", csv, function(err) {
     console.log("The file was saved!");
 });
 
-//formating functino for manking numbebers 2 digits ex "2" -> "02"
+//formating function for manking numbebers 2 digits ex "2" -> "02"
 function pad2(number) {
      return (number < 10 ? '0' : '') + number
 }
