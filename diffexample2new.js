@@ -8,10 +8,8 @@ with a json data format and nodejs is built to handle
 that natively without any external plugins
 */
 
-//Node JS dependencies for reading and writing files to the file system. --revised here
-var process = require('process');
 //Read the file from the file system --revised here
-var obj = process.argv;
+var obj = process.argv[2];
 //get the date from the first item.
 var date = new Date(obj[0].timestamp);
 //format the date to the YYYYMMDD.csv required for the submission.
@@ -30,7 +28,7 @@ for(var i = 0; i < obj.length; i++){
 }
 
 //store the compiled csv in a file formated YYYYMMDD.csv --revised here
-obj.writeFile("./" + datef.getFullYear() + addzero(datef.getMonth() + 1) + addzero(datef.getDate()) + ".csv", csv, function(err) {
+obj.createWriteStream("./" + datef.getFullYear() + addzero(datef.getMonth() + 1) + addzero(datef.getDate()) + ".csv", csv, function(err) {
     if(err) {
         return console.log(err);
     }
